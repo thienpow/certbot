@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: certbot
+  labels:
+    app: certbot
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: certbot
+  template:
+    metadata:
+      labels:
+        app: certbot
+    spec:
+      serviceAccountName: certbot
+      containers:
+      - name: certbot
+        image: thienpow/certbot:latest
+        env:
+          - name: LISTEN_ON
+            value: 0.0.0.0:3099
+          - name: WWW_FOLDER
+            value: www
+          - name: SERVICE_NAME
+            value: certbot
+          - name: CERTBOT_PARAMS
+            value: "--domains dev-api.example.com -d dev-api.example.com -d dev-admin.example.com"
+          - name: CERT_NAME
+            value: dev-api.example.com-0001
+          - name: CERT_EMAIL
+            value: thienpow@gmail.com
+        resources: {}
+        ports:
+          - containerPort: 80
+          - containerPort: 3099
+      #below is only needed if you are hosting the docker on other registry instead of dockerhub
+      #imagePullSecrets:
+      #- name: registry-example-dev
+  
+      

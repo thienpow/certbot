@@ -3,7 +3,7 @@
 * New Cert Request via HTTP-01 Challenge
 * Apply update to Kubernetes tls Secret, letsencrypt-tls-certs
 * Check for Renewal 2 times a day
-* act as a dummy web on port 3099, just in case you want to use it to test, 
+* act as a dummy web on port 3099, just in case you want to use it to test, you can customize the www/index.html
 * leaving port 80 unused because, HTTP-01 Challenge by certbot will need to occupie it.
 
 # Usage
@@ -77,5 +77,5 @@ clusters:
                 address:
                   socket_address:
                     address: certbot #as yu can see both cluster are actually point to the same certbot container as above
-                    port_value: 3099 #but here we show the visitor with the content of http://xxx.example.com/www/index.html 
+                    port_value: 3099 #but here we show the visitor with the content of http://xxx.example.com/index.html 
 ```

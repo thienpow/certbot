@@ -47,10 +47,6 @@ static_resources:
               http_filters:
               - name: envoy.filters.http.router
                 typed_config: {}
-
-...
-...
-
 clusters:
       - name: acmesolver_cluster
         connect_timeout: 0.25s

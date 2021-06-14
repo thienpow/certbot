@@ -8,6 +8,14 @@ else
   echo "FOUND EXISTING secret letsencrypt-tls-certs.  Wait for next"
 fi
 
+if [ -z "$GOT_NEW" ]
+then 
+  echo "NO GOT_NEW env found."
+else
+  echo "GOT_NEW env found."
+  certbot certonly --non-interactive --agree-tos --cert-name $CERT_NAME --email $CERT_EMAIL --standalone --expand $CERTBOT_PARAMS
+fi
+
 /wwwloader &
 
 i=1

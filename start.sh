@@ -1,4 +1,6 @@
 #!/bin/sh
+
+
 VALUE=`kubectl get secret letsencrypt-tls-certs -o 'go-template={{index .data "tls.key"}}' | base64 -d`
 if [ -z "$VALUE" ]
 then

@@ -1,12 +1,9 @@
-FROM ubuntu:20.04
+FROM thienpow/wwwloader:latest
 
-RUN apt-get update && apt-get install -y iputils-ping curl nano certbot && rm -rf /var/lib/apt/lists/*
+RUN apk update && apk --no-cache add curl certbot
 
 RUN curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl"
 RUN chmod 755 kubectl && mv kubectl /usr/local/bin/
-
-COPY ./wwwloader /wwwloader
-RUN chmod u+x /wwwloader
 
 COPY ./www /www
 

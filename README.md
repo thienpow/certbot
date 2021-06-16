@@ -1,9 +1,11 @@
 # Features
-
+* Run on most tiny web server docker image on thienpow/wwwloader (go find out this repo and source too!)
 * New Cert Request via HTTP-01 Challenge
 * Apply update to Kubernetes tls Secret, letsencrypt-tls-certs
 * Check for Renewal 2 times a day
-* act as a dummy web on port 3099, just in case you want to use it to test, you can customize the www/index.html
+* Expand original cert, How? GOT_NEW: new, check the simple example/certbot-deployment.yaml 
+* act as a dummy web on port 3099(you set it in deployment.yaml check the example folder), 
+* just in case you want to use it to test, you can customize the www/index.html
 * leaving port 80 unused because, HTTP-01 Challenge by certbot will need to occupie it.
 
 # Usage

@@ -19,6 +19,8 @@ spec:
       - name: certbot
         image: thienpow/certbot:latest
         env:
+         #- name: GOT_NEW # must remove when the new cert alredy expanded. can use # to remark it out
+         #  value: new # remove when the new cert already expanded. and apply -f again.
           - name: LISTEN_ON
             value: 0.0.0.0:3099
           - name: WWW_FOLDER
